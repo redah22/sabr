@@ -25,11 +25,11 @@ export const products = [
     },
     {
         id: '4',
-        name: 'Wide-Leg Tactical Cargo',
+        name: 'SABR Embroidered Denim',
         price: 135,
-        images: ['/images/product-4.jpg'],
+        images: ['/images/product-4-v2.jpg'],
         category: 'Bottoms',
-        description: 'Ultra-wide leg cargo pants with stacking fit and 3D pockets.'
+        description: 'Vintage wash blue denim, baggy fit. Features embroidered SABR calligraphy on the back pocket and sword logo on the calf.'
     },
     {
         id: '5',
