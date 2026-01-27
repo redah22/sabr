@@ -10,18 +10,12 @@ export default function ProductCard({ product }) {
     return (
         <div className={styles.card}>
             <Link href={`/shop/${product.id}`} className={styles.imageContainer}>
-                {/* Using a placeholder because real images don't exist yet */}
-                <div style={{ width: '100%', height: '100%', background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ccc' }}>
-                    IMAGE
-                </div>
-                {/* 
-          <Image 
-            src={product.image} 
-            alt={product.name} 
-            fill 
-            className={styles.image} 
-          />
-          */}
+                <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className={styles.image}
+                />
             </Link>
 
             <div>

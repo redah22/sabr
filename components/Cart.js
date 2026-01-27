@@ -34,7 +34,12 @@ export default function CartDrawer() {
                                 cart.map((item) => (
                                     <div key={item.id} className={styles.item}>
                                         <div className={styles.itemImage}>
-                                            {/* Placeholder */}
+                                            <Image
+                                                src={item.image || '/images/product-1.jpg'}
+                                                alt={item.name}
+                                                fill
+                                                style={{ objectFit: 'cover' }}
+                                            />
                                         </div>
                                         <div className={styles.itemInfo}>
                                             <div>
