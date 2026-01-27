@@ -11,7 +11,7 @@ export default function ProductCard({ product }) {
         <div className={styles.card}>
             <Link href={`/shop/${product.id}`} className={styles.imageContainer}>
                 <Image
-                    src={product.image}
+                    src={product.images[0]}
                     alt={product.name}
                     fill
                     className={styles.image}
@@ -26,7 +26,7 @@ export default function ProductCard({ product }) {
                     </div>
                     <span className={styles.price}>${product.price}</span>
                 </div>
-                <button className={styles.addToCart} onClick={() => addToCart(product)}>
+                <button className={styles.addToCart} onClick={() => addToCart({ ...product, image: product.images[0] })}>
                     Add to Cart
                 </button>
             </div>
