@@ -25,35 +25,35 @@ export const products = [
     },
     {
         id: '4',
-        name: 'Technical Cargo V1',
-        price: 120,
+        name: 'Wide-Leg Tactical Cargo',
+        price: 135,
         image: '/images/product-4.jpg',
         category: 'Bottoms',
-        description: 'Nylon tactical cargo pants with adjustable hem.'
+        description: 'Ultra-wide leg cargo pants with stacking fit and 3D pockets.'
     },
     {
         id: '5',
-        name: 'Mohair Knit Sweater',
-        price: 110,
+        name: 'Acid Wash Graphic Tee',
+        price: 55,
         image: '/images/product-5.jpg',
-        category: 'Knitwear',
-        description: 'Fuzzy mohair blend sweater with distressed details.'
+        category: 'T-Shirts',
+        description: 'Vintage washed grey tee with large grunge Arabic calligraphy print.'
     },
     {
         id: '6',
-        name: 'Shell Windbreaker',
+        name: 'Distressed Chrome Hoodie',
         price: 145,
         image: '/images/product-6.jpg',
-        category: 'Outerwear',
-        description: 'Water-resistant shell jacket with reflective piping.'
+        category: 'Hoodies',
+        description: 'Heavily distressed sun-faded hoodie with chrome-effect puff print.'
     },
     {
         id: '7',
-        name: 'Crossbody Utility Bag',
-        price: 60,
+        name: 'SABR Varsity Jacket',
+        price: 350,
         image: '/images/product-7.jpg',
-        category: 'Accessories',
-        description: 'Compact bag for daily essentials.'
+        category: 'Outerwear',
+        description: 'Wool and leather varsity jacket with chenille sword patches.'
     },
     {
         id: '8',
