@@ -1,34 +1,66 @@
 export const products = [
     {
         id: '1',
-        name: 'SABR Heavy T-Shirt',
+        name: 'SABR Logo Tee - Black',
         price: 45,
         image: '/images/product-1.jpg',
         category: 'T-Shirts',
-        description: 'Heavyweight cotton t-shirt with puff print logo.'
+        description: 'Heavyweight cotton t-shirt with puff print generic logo.'
     },
     {
         id: '2',
-        name: 'Street Hoodie Black',
-        price: 85,
+        name: 'SABR Logo Tee - White',
+        price: 45,
         image: '/images/product-2.jpg',
-        category: 'Hoodies',
-        description: 'Oversized fit hoodie with embroidered Arabic calligraphy.'
+        category: 'T-Shirts',
+        description: 'Heavyweight cotton t-shirt with puff print generic logo.'
     },
     {
         id: '3',
-        name: 'Cargo Pants',
+        name: 'Essential Hoodie',
         price: 95,
         image: '/images/product-3.jpg',
-        category: 'Pants',
-        description: 'Tactical cargo pants with multiple pockets.'
+        category: 'Hoodies',
+        description: 'Oversized fit hoodie 450gsm French Terry.'
     },
     {
         id: '4',
-        name: 'SABR Cap',
-        price: 35,
+        name: 'Technical Cargo V1',
+        price: 120,
         image: '/images/product-4.jpg',
+        category: 'Bottoms',
+        description: 'Nylon tactical cargo pants with adjustable hem.'
+    },
+    {
+        id: '5',
+        name: 'Mohair Knit Sweater',
+        price: 110,
+        image: '/images/product-5.jpg',
+        category: 'Knitwear',
+        description: 'Fuzzy mohair blend sweater with distressed details.'
+    },
+    {
+        id: '6',
+        name: 'Shell Windbreaker',
+        price: 145,
+        image: '/images/product-6.jpg',
+        category: 'Outerwear',
+        description: 'Water-resistant shell jacket with reflective piping.'
+    },
+    {
+        id: '7',
+        name: 'Crossbody Utility Bag',
+        price: 60,
+        image: '/images/product-7.jpg',
         category: 'Accessories',
-        description: '5-panel cap with embroidered logo.'
+        description: 'Compact bag for daily essentials.'
+    },
+    {
+        id: '8',
+        name: 'SABR Trucker Hat',
+        price: 35,
+        image: '/images/product-8.jpg',
+        category: 'Headwear',
+        description: 'Foam front trucker hat with embroidered arc logo.'
     }
 ];
