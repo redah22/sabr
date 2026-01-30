@@ -16,6 +16,12 @@
     border-bottom: 1px solid var(--gray-200);
 }
 
+.navScrolled .link,
+.navScrolled .iconBtn,
+.navScrolled .mobileToggle {
+    color: black;
+}
+
 .container {
     max-width: 1400px;
     margin: 0 auto;

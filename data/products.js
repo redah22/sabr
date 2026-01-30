@@ -35,7 +35,7 @@ export const products = [
         id: '5',
         name: 'Acid Wash Graphic Tee',
         price: 55,
-        images: ['/images/product-5.jpg'],
+        images: ['/images/product-5.jpg', '/images/product-5-back.png', '/images/product-5-angle.png', '/images/product-5-detail.png'],
         category: 'T-Shirts',
         description: 'Vintage washed grey tee with large grunge Arabic calligraphy print.'
     },

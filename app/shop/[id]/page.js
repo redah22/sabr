@@ -71,7 +71,7 @@ export default function ProductPage({ params }) {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                     <div>
                         <h1 style={{ fontSize: '2.5rem', fontWeight: '800', textTransform: 'uppercase', lineHeight: '1.1' }}>{product.name}</h1>
-                        <p style={{ fontSize: '1.25rem', color: '#333', marginTop: '0.5rem' }}>${product.price}</p>
+                        <p style={{ fontSize: '1.25rem', color: 'white', marginTop: '0.5rem' }}>${product.price}</p>
                     </div>
 
                     <div style={{ height: '1px', background: '#eee', width: '100%' }} />
@@ -86,13 +86,13 @@ export default function ProductPage({ params }) {
                             className='btn'
                             style={{
                                 width: '100%',
-                                background: 'black',
-                                color: 'white',
+                                background: 'white',
+                                color: 'black',
                                 padding: '1rem',
                                 fontSize: '1rem',
                                 fontWeight: '600',
                                 textTransform: 'uppercase',
-                                border: 'none',
+                                border: '1px solid black',
                                 cursor: 'pointer'
                             }}
                         >
