@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { products } from '../../../data/products';
 import { useCart } from '../../../context/CartContext';
 import { notFound } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -17,6 +18,7 @@ export default function ProductPage({ params }) {
     const product = products.find(p => p.id === id);
     const { addToCart, setIsCartOpen } = useCart();
     const [selectedImage, setSelectedImage] = useState(0);
+    const [isZoomed, setIsZoomed] = useState(false);
     const [selectedColor, setSelectedColor] = useState(product?.colors ? product.colors[0] : null);
     const [selectedSize, setSelectedSize] = useState(null);
     const [error, setError] = useState('');
@@ -48,7 +50,9 @@ export default function ProductPage({ params }) {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem' }}>
                 {/* Gallery Section */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    <div style={{ position: 'relative', width: '100%', aspectRatio: '3/4', background: '#f5f5f5', overflow: 'hidden' }}>
+                    <div
+                        style={{ position: 'relative', width: '100%', aspectRatio: '3/4', background: '#f5f5f5', overflow: 'hidden' }}
+                    >
                         <Image
                             src={product.images[selectedImage]}
                             alt={product.name}
@@ -56,7 +60,71 @@ export default function ProductPage({ params }) {
                             style={{ objectFit: 'cover' }}
                             priority
                         />
+                        <button
+                            onClick={() => setIsZoomed(true)}
+                            style={{
+                                position: 'absolute',
+                                bottom: '1rem',
+                                left: '1rem',
+                                background: 'white',
+                                border: '1px solid #eee',
+                                borderRadius: '50%',
+                                width: '40px',
+                                height: '40px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                cursor: 'pointer',
+                                transition: 'transform 0.2s',
+                                zIndex: 10
+                            }}
+                            aria-label="Zoom image"
+                            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                        >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </button>
                     </div>
+
+                    <AnimatePresence>
+                        {isZoomed && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                onClick={() => setIsZoomed(false)}
+                                style={{
+                                    position: 'fixed',
+                                    top: 0,
+                                    left: 0,
+                                    width: '100vw',
+                                    height: '100vh',
+                                    background: 'rgba(0,0,0,0.9)',
+                                    zIndex: 1000,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'zoom-out'
+                                }}
+                            >
+                                <div style={{ position: 'relative', width: '90vw', height: '90vh' }}>
+                                    <Image
+                                        src={product.images[selectedImage]}
+                                        alt={product.name}
+                                        fill
+                                        style={{ objectFit: 'contain' }}
+                                        quality={100}
+                                    />
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
                     {product.images.length > 1 && (
                         <div style={{ display: 'flex', gap: '1rem' }}>
                             {product.images.map((img, index) => {
