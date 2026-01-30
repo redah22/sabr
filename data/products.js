@@ -59,7 +59,12 @@ export const products = [
         id: '8',
         name: 'SABR Trucker Hat',
         price: 35,
-        images: ['/images/product-8.jpg'],
+        images: ['/images/product-8.jpg', '/images/product-8-pink.png', '/images/product-8-babyblue.png'],
+        colors: [
+            { name: 'Black', imageIndex: 0, hex: '#000000' },
+            { name: 'Pink', imageIndex: 1, hex: '#FFC0CB' },
+            { name: 'Sky Blue', imageIndex: 2, hex: '#87CEEB' }
+        ],
         category: 'Headwear',
         description: 'Foam front trucker hat with embroidered arc logo.'
     }
