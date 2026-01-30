@@ -9,11 +9,11 @@ export const products = [
     },
     {
         id: '2',
-        name: 'SABR Logo Tee - White',
-        price: 45,
-        images: ['/images/product-2.jpg'],
-        category: 'T-Shirts',
-        description: 'Heavyweight cotton t-shirt with puff print generic logo.'
+        name: 'SABR Football Jersey - White',
+        price: 85,
+        images: ['/images/product-2.png'],
+        category: 'Jerseys',
+        description: 'Performance football jersey with embroidered crest and sponsor-style SABR branding.'
     },
     {
         id: '3',
@@ -41,11 +41,11 @@ export const products = [
     },
     {
         id: '6',
-        name: 'Distressed Chrome Hoodie',
-        price: 145,
-        images: ['/images/product-6.jpg'],
+        name: 'SABR Essential Zip-Up',
+        price: 135,
+        images: ['/images/product-6-zipup-minimal.png', '/images/product-6-zipup-back.png'],
         category: 'Hoodies',
-        description: 'Heavily distressed sun-faded hoodie with chrome-effect puff print.'
+        description: 'Clean, heavyweight zip-up hoodie (450gsm). Features subtle tonal embroidery on the chest and asymmetric floral embroidery on the right sleeve.'
     },
     {
         id: '7',
@@ -67,5 +67,13 @@ export const products = [
         ],
         category: 'Headwear',
         description: 'Foam front trucker hat with embroidered arc logo.'
+    },
+    {
+        id: '9',
+        name: 'Distressed Chrome Hoodie',
+        price: 145,
+        images: ['/images/product-6.jpg'],
+        category: 'Hoodies',
+        description: 'Heavily distressed sun-faded hoodie with chrome-effect puff print.'
     }
 ];

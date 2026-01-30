@@ -18,14 +18,25 @@ export default function ProductPage({ params }) {
     const { addToCart, setIsCartOpen } = useCart();
     const [selectedImage, setSelectedImage] = useState(0);
     const [selectedColor, setSelectedColor] = useState(product?.colors ? product.colors[0] : null);
+    const [selectedSize, setSelectedSize] = useState(null);
+    const [error, setError] = useState('');
 
     if (!product) {
         return notFound();
     }
 
     const handleAddToCart = () => {
-        addToCart({ ...product, image: product.images[selectedImage], selectedColor: selectedColor?.name }); // Pass main image for cart
-        setIsCartOpen(true);
+        if (product.category !== 'Headwear' && !selectedSize) {
+            setError('Please calculate your size.');
+            return;
+        }
+        setError('');
+        addToCart({
+            ...product,
+            image: product.images[selectedImage],
+            selectedColor: selectedColor?.name,
+            selectedSize: product.category === 'Headwear' ? null : selectedSize
+        });
     };
 
     return (
@@ -114,6 +125,41 @@ export default function ProductPage({ params }) {
                             </div>
                         )}
                     </div>
+
+                    {product.category !== 'Headwear' && (
+                        <div>
+                            <p style={{ fontSize: '0.9rem', fontWeight: '600', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
+                                Size: {selectedSize || 'Select'}
+                            </p>
+                            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                                {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
+                                    <button
+                                        key={size}
+                                        onClick={() => {
+                                            setSelectedSize(size);
+                                            setError('');
+                                        }}
+                                        style={{
+                                            width: '45px',
+                                            height: '45px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            border: selectedSize === size ? '2px solid white' : '1px solid #555',
+                                            background: selectedSize === size ? 'white' : 'transparent',
+                                            color: selectedSize === size ? 'black' : 'white',
+                                            cursor: 'pointer',
+                                            fontWeight: '600',
+                                            fontSize: '0.9rem'
+                                        }}
+                                    >
+                                        {size}
+                                    </button>
+                                ))}
+                            </div>
+                            {error && <p style={{ color: 'red', fontSize: '0.85rem', marginTop: '0.5rem' }}>{error}</p>}
+                        </div>
+                    )}
 
                     <div style={{ height: '1px', background: '#eee', width: '100%' }} />
 

@@ -22,25 +22,44 @@ export function CartProvider({ children }) {
 
     const addToCart = (product) => {
         setCart((prev) => {
-            const existing = prev.find(item => item.id === product.id);
-            if (existing) {
-                return prev.map(item =>
-                    item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-                );
+            // Create a unique ID for the cart item based on product ID and variants (like size)
+            // Or simpler: check if an item with same ID AND same selectedSize exists
+            const existingIndex = prev.findIndex(item =>
+                item.id === product.id && item.selectedSize === product.selectedSize
+            );
+
+            if (existingIndex > -1) {
+                // Item exists with same size, increment quantity
+                const newCart = [...prev];
+                newCart[existingIndex].quantity += 1;
+                return newCart;
             }
-            return [...prev, { ...product, quantity: 1 }];
+
+            // New item (or different size), add to cart with a unique internal ID for easier management if needed, 
+            // but for now relying on index or just adding it is fine. 
+            // Better: Add a 'cartItemId' to every item to easily remove specific lines.
+            return [...prev, { ...product, cartItemId: Date.now() + Math.random(), quantity: 1 }];
         });
-        setIsCartOpen(true);
+
+        if (cart.length === 0) {
+            setIsCartOpen(true);
+        }
     };
 
-    const removeFromCart = (productId) => {
-        setCart((prev) => prev.filter(item => item.id !== productId));
+    const removeFromCart = (cartItemId) => {
+        setCart((prev) => prev.filter(item => item.cartItemId !== cartItemId));
     };
 
-    const updateQuantity = (productId, quantity) => {
+    const updateQuantity = (cartItemId, quantity) => {
         if (quantity < 1) return;
         setCart((prev) => prev.map(item =>
-            item.id === productId ? { ...item, quantity } : item
+            item.cartItemId === cartItemId ? { ...item, quantity } : item
+        ));
+    };
+
+    const updateItemSize = (cartItemId, newSize) => {
+        setCart((prev) => prev.map(item =>
+            item.cartItemId === cartItemId ? { ...item, selectedSize: newSize } : item
         ));
     };
 
@@ -53,6 +72,7 @@ export function CartProvider({ children }) {
             addToCart,
             removeFromCart,
             updateQuantity,
+            updateItemSize,
             isCartOpen,
             setIsCartOpen,
             cartTotal,
